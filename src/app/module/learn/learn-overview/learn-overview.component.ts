@@ -27,13 +27,11 @@ export class LearnOverviewComponent implements OnInit {
 
   ngOnInit(): void {
     this.getChapter();
-    console.log(this.selectedChapter);
     this.getListOfTopic();
   }
 
   updateTopics(event: Event) {
     this.selectedTopic = (event.target as HTMLSelectElement).value;
-    console.log(this.selectedTopic)
   }
 
 
@@ -43,7 +41,6 @@ export class LearnOverviewComponent implements OnInit {
 
   updateTopics1(event: Event) {
     this.selectedChapter = (event.target as HTMLSelectElement).value;
-    console.log(this.selectedChapter);
     this.getListOfTopic();
   }
 
@@ -60,7 +57,6 @@ export class LearnOverviewComponent implements OnInit {
   getListOfTopic() {
     this.listOfTopic = []
     for (let data of listOfQuestions1) {
-      console.log(this.selectedChapter)
       if (this.selectedChapter === data.chapter) {
         for(let topic of data.listOfTopic){
           this.listOfTopic.push(topic)

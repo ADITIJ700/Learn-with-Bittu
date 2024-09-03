@@ -25,7 +25,9 @@ export class AppComponent implements OnInit {
       this.isSideNavOpened= false;
     }
   }
-
+ /**
+   * Toggles the visibility of the tree view.
+   */
   toggleTreeVisibility() {
     this.showTree = !this.showTree;
   }

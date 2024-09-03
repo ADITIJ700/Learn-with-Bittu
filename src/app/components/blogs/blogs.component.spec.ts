@@ -62,4 +62,54 @@ describe('BlogsComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+  it('should create', () => {
+    expect(component).toBeTruthy();
+  });
+
+  it('should have a default selectedCategory of "all"', () => {
+    expect(component.selectedCategory).toBe('all');
+  });
+
+  it('should filter articles by the selected category', () => {
+    component.articles = [
+      { category: 'tech', title: 'Tech Article' },
+      { category: 'health', title: 'Health Article' },
+      { category: 'tech', title: 'Another Tech Article' }
+    ];
+
+    component.selectedCategory = 'tech';
+    component.filterArticles();
+    expect(component.filteredArticles.length).toBe(2);
+    expect(component.filteredArticles).toEqual([
+      { category: 'tech', title: 'Tech Article' },
+      { category: 'tech', title: 'Another Tech Article' }
+    ]);
+
+    component.selectedCategory = 'health';
+    component.filterArticles();
+    expect(component.filteredArticles.length).toBe(1);
+    expect(component.filteredArticles).toEqual([
+      { category: 'health', title: 'Health Article' }
+    ]);
+  });
+
+  it('should show all articles when selectedCategory is "all"', () => {
+    component.articles = [
+      { category: 'tech', title: 'Tech Article' },
+      { category: 'health', title: 'Health Article' }
+    ];
+
+    component.selectedCategory = 'all';
+    component.filterArticles();
+    expect(component.filteredArticles.length).toBe(2);
+    expect(component.filteredArticles).toEqual(component.articles);
+  });
+
+  it('should filter articles when onCategoryChange is called', () => {
+    spyOn(component, 'filterArticles').and.callThrough();
+    component.selectedCategory = 'tech';
+    component.onCategoryChange();
+    expect(component.filterArticles).toHaveBeenCalled();
+  });
 });
+

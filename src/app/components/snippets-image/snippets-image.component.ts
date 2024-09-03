@@ -62,7 +62,6 @@ export class SnippetsImageComponent implements OnInit {
   compareUniqueID(group: FormGroup): { [key: string]: any } | null {
     const uniqueId = group.controls['uniqueId'].value;
     const confirmUniqueId = group.controls['confirmUniqueId'].value;
-    console.log({uniqueId: uniqueId, confirmUniqueId: confirmUniqueId});
     if(uniqueId !== confirmUniqueId) {
       group.controls['confirmUniqueId'].setErrors({ uniqueIdMatch: true });
       return {uniqueIdMatch: true};
@@ -73,7 +72,6 @@ export class SnippetsImageComponent implements OnInit {
   compareDates(group: FormGroup): { [key: string]: any } | null {
     const startDate = group.controls['startDate'].value;
     const endDate = group.controls['endDate'].value;
-    console.log({startDate: startDate, endDate: endDate})
 
     if (startDate && endDate && startDate >= endDate) {
       group.controls['endDate'].setErrors({ datesComparision: true });
@@ -101,9 +99,6 @@ export class SnippetsImageComponent implements OnInit {
   simpleForm1Submit(){
     if (this.simpleForm1.valid) {
       this.simpleForm1.value.DOB = `${this.simpleForm1.value.DOB.getDate()}/${this.simpleForm1.value.DOB.getMonth() + 1}/${this.simpleForm1.value.DOB.getFullYear()}`;
-      console.log(this.simpleForm1.value);
-    } else {
-      console.log('Form is invalid');
     }
   }
 

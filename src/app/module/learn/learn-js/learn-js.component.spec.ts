@@ -40,7 +40,6 @@ describe('LearnJSComponent', () => {
   });
 
   it('should create', () => {
-    console.log("Hello ..................................")
     expect(component).toBeTruthy();
   });
 });
